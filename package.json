@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index"
+    "start": "npm run build && node index.js",
+    "dev": "concurrently \"nodemon index.js\" \"npm run tailwind:watch\" ",
+    "build": "npm run tailwind",
+    "tailwind": "npx tailwind -i tailwind.css -o public/style.css",
+    "tailwind:watch": "npx tailwindcss -i tailwind.css -o public/style.css --watch"
   },
   "repository": {
     "type": "git",
